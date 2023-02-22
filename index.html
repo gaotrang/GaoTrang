@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const user = { name: 'Nguyễn Văn A', email: 'nguyen@gmail.com' }
+        const student = { id: 123, score: 10 }
+        // INPUT: 2objects
+        //a: { name: string, email:string}
+        //b: {id:string,score:string}
+        //OUTPUT: string hoc sinh [name], ma so[id] co diem la [score]
+        const funcA = ({name}, {id, score}) => {
+            return `hoc sinh ${name}, co ma so ${id} co diem la ${score}`
+        }
+        console.log(funcA(user,student))
+
+        // const funcB = ({id, score}, name, email) => {}
+        // console.log(funcB( student, user.name, user.email)) //2 ket qua tuong tu nhau
+
+        ///forEach // xuat cac phan tu cua mang
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        arr.forEach(item =>{
+            console.log(item)
+        })
+
+        ////map // b = [2,4,6,8,10,...]
+        const b = arr.map(item =>{
+            return item *2
+        })
+        console.log(b)
+
+        //filter
+        const c = arr.filter(item =>{
+            return item % 2 !== 0
+        })
+        console.log(c)
+        //find
+        const d = arr.find(item =>{
+            return item % 3 === 0
+        })
+        console.log(d)
+        // ON DAU ...
+        const userA = {
+            ...user,
+            name: 'Phung Văn B'
+        }
+        console.log(userA) //{ name: 'Phung Văn B', email: 'nguyen@gmail.com' }
+        //ket hop
+        const users = [
+            {name: 'A', email:'a@gmail.com', age: '20'},
+            {name: 'B', email: 'b@gmail.com', age: '25'},
+            {name: 'C', email: 'c@gmail.com', age: '30'}];
+            //a. Tim nhung nguoi tren 25 tuoi
+        const usersA = users.filter((item) =>{
+            return   item.age > 25
+        })
+        console.log(usersA)
+            //b. Tim nguoi co ten C va 30 tuoi
+        
+        const usersB = users.find((item) =>{
+            return item.name === 'C' &&  item.age === 30
+        })
+        console.log(usersB)
+        //Doi tat ca so tuoi duoi 25 thanh 30
+
+        //Cach 1
+        // const usersC = users.map((item) =>{
+        //     if(item.age <= 25){
+        //         item.age = 30
+        //     }
+        //     return item
+        // })
+        // console.log(usersC)
+
+        //Cach 2
+        // const usersC = users.map((item) =>{
+        //     return {
+        //         ...item,
+        //         age: item.age <= 25 ? 30 : item.age 
+        //     }
+        // })
+        // console.log(usersC)
+
+        //Cach 3
+
+        const usersC = users.map((item) =>{
+            if(item.age <= 25){
+                return {
+                    ...item,
+                    age: 30
+                }
+             }
+            return item
+         })
+        console.log(usersC)
+         // cập nhật email của tất cả user thành name+tuoi (A20@gmail.com)
+         const usersD = users.map((item) => {
+            return {
+                ...item,
+                email: `${item.name}${item.age}@gmail.com`
+            }
+         })
+         console.log(usersD)
+         // thay tất cả các phầm tử của users thành 10
+         const usersE = users.map((item) =>{
+             return item = 10
+         })
+         console.log(usersE)
+
+      </script>
+</body>
+</html>
